@@ -8,7 +8,7 @@
 #4 install wkhtmltopdf
 
 #0
-apt update && apt upgrade
+apt update -y && apt upgrade -y
 apt install -y sudo nano git wget openssh-server fail2ban postgresql postgresql-client python3 python3-pip
 cd /opt/
 git clone --single-branch --depth 1 -b 16.0 https://github.com/odoo/odoo.git
@@ -20,7 +20,7 @@ chown odoo -R /opt/odoo
 #2
 sudo -u postgres createuser --createdb --username postgres --no-createrole --no-superuser odoo
 #check if odoo is working
-sudo -u odoo /opt/odoo/odoo-bin --addons-path /opt/odoo/addons/
+#sudo -u odoo /opt/odoo/odoo-bin --addons-path /opt/odoo/addons/
 #3
 #create log folder
 mkdir /var/log/odoo
@@ -41,7 +41,21 @@ systemctl daemon-reload
 systemctl enable odoo
 systemctl start odoo
 
-#4
+#4 TODO Install WKHTMLTOPDF
+# Selecting previously unselected package wkhtmltox.
+# (Reading database ... 44564 files and directories currently installed.)
+# Preparing to unpack wkhtmltox_0.12.6-1.buster_amd64.deb ...
+# Unpacking wkhtmltox (1:0.12.6-1.buster) ...
+# dpkg: dependency problems prevent configuration of wkhtmltox:
+#  wkhtmltox depends on xfonts-75dpi; however:
+#   Package xfonts-75dpi is not installed.
+#  wkhtmltox depends on xfonts-base; however:
+#   Package xfonts-base is not installed.
+
+# dpkg: error processing package wkhtmltox (--install):
+#  dependency problems - leaving unconfigured
+# Errors were encountered while processing:
+#  wkhtmltox
 cd /tmp
 wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.buster_amd64.deb
 dpkg -i wkhtmltox_0.12.6-1.buster_amd64.deb
