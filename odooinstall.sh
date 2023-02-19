@@ -39,23 +39,11 @@ chown root /etc/systemd/system/odoo.service
 #reload services, autostart enable and start
 systemctl daemon-reload
 systemctl enable odoo
-systemctl start odoo
 
-#4 TODO Install WKHTMLTOPDF
-# Selecting previously unselected package wkhtmltox.
-# (Reading database ... 44564 files and directories currently installed.)
-# Preparing to unpack wkhtmltox_0.12.6-1.buster_amd64.deb ...
-# Unpacking wkhtmltox (1:0.12.6-1.buster) ...
-# dpkg: dependency problems prevent configuration of wkhtmltox:
-#  wkhtmltox depends on xfonts-75dpi; however:
-#   Package xfonts-75dpi is not installed.
-#  wkhtmltox depends on xfonts-base; however:
-#   Package xfonts-base is not installed.
-
-# dpkg: error processing package wkhtmltox (--install):
-#  dependency problems - leaving unconfigured
-# Errors were encountered while processing:
-#  wkhtmltox
+#4
 cd /tmp
 wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.buster_amd64.deb
 dpkg -i wkhtmltox_0.12.6-1.buster_amd64.deb
+apt install -y --fix-broken && apt install -y -f
+
+systemctl start odoo
