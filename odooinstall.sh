@@ -11,7 +11,7 @@
 apt update -y && apt upgrade -y
 apt install -y sudo nano git wget openssh-server fail2ban postgresql postgresql-client python3 python3-pip
 cd /opt/
-git clone --single-branch --depth 1 -b 16.0 https://github.com/odoo/odoo.git
+git clone --single-branch --depth 1 -b 14.0 https://github.com/odoo/odoo.git
 cd /opt/odoo
 sed -n -e '/^Depends:/,/^Pre/ s/ python3-\(.*\),/python3-\1/p' debian/control | sudo xargs apt-get install -y
 #1
