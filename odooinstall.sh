@@ -27,7 +27,7 @@ mkdir /var/log/odoo
 chown odoo -R /var/log/odoo
 
 #create config file
-printf '%s[options%s]%s\ndb_host = False%s\ndb_port = False%s\ndb_user = odoo%s\ndb_password = False%s\naddons_path = /opt/odoo/addons%s\nlogfile = /var/log/odoo/odoo.log%s\n' > /etc/odoo.conf
+printf '%s[options%s]%s\ndb_host = False%s\ndb_port = False%s\ndb_user = odoo%s\ndb_password = False%s\naddons_path = /opt/odoo/addons%s\nlogfile = /var/log/odoo/odoo.log%s\nproxy_mode = True%s\n' > /etc/odoo.conf
 chmod 640 /etc/odoo.conf
 chown odoo /etc/odoo.conf
 
